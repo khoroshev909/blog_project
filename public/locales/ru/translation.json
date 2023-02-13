@@ -1,5 +1,9 @@
 {
   "language": "Русский",
   "main": "Главная",
-  "about": "О сайте"
+  "about": "О сайте",
+  "notFound": "Страница не найдена",
+  "bugButton": "Вызвать баг",
+  "somethingWentWrong": "Что-то пошло не так",
+  "reloadThePage": "Обновить страницу"
 }

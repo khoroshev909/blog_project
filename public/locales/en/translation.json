@@ -1,5 +1,9 @@
 {
   "language": "English",
   "main": "Main",
-  "about": "About"
+  "about": "About",
+  "notFound": "Page not found",
+  "bugButton": "Bug button",
+  "somethingWentWrong": "Something went wrong",
+  "reloadThePage": "Reload the page"
 }

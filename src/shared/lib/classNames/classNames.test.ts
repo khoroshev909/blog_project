@@ -11,12 +11,20 @@ describe('classNames', () => {
     });
 
     test('with mods', () => {
-        const expected = classNames('someClass', { selected: true }, ['class1', 'class2']);
+        const expected = classNames(
+            'someClass',
+            { selected: true },
+            ['class1', 'class2'],
+        );
         expect(expected).toBe('someClass class1 class2 selected');
     });
 
     test('with mods undefined', () => {
-        const expected = classNames('someClass', { selected: true, active: undefined }, ['class1', 'class2']);
+        const expected = classNames(
+            'someClass',
+            { selected: true, active: undefined },
+            ['class1', 'class2'],
+        );
         expect(expected).toBe('someClass class1 class2 selected');
     });
 });
