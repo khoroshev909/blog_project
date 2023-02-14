@@ -11,8 +11,16 @@ interface SidebarProps {
 export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     return (
-        <div className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
-            <Button onClick={() => setCollapsed((prev) => !prev)}>Toggle</Button>
+        <div
+            data-testid="sidebar"
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+        >
+            <Button
+                data-testid="toggle-button"
+                onClick={() => setCollapsed((prev) => !prev)}
+            >
+                Toggle
+            </Button>
             <div className={cls.sidebarSwitchers}>
                 <ThemeSwitcher />
                 <LangSwitcher />
