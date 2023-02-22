@@ -5,5 +5,6 @@
   "notFound": "Страница не найдена",
   "bugButton": "Вызвать баг",
   "somethingWentWrong": "Что-то пошло не так",
-  "reloadThePage": "Обновить страницу"
+  "reloadThePage": "Обновить страницу",
+  "toggle": "Переключить"
 }
