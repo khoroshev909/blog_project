@@ -49,6 +49,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error', // Проверяем правила хуков
         'react-hooks/exhaustive-deps': 'error', // Проверяем зависимости эффекта
+        'no-param-reassign': 'off',
     },
     globals: {
         __IS_DEV__: true,
@@ -58,7 +59,7 @@ module.exports = {
             files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
-                'max-len': 'off'
+                'max-len': 'off',
             },
         },
     ],
