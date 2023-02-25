@@ -8,6 +8,7 @@ import MainIcon from 'shared/assets/icons/main-page.svg';
 import AboutIcon from 'shared/assets/icons/about-page.svg';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { BugButton } from 'widgets/BugButton';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -22,6 +23,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
             <div className={cls.items}>
+                <BugButton />
                 <AppLink
                     className={cls.item}
                     to={RoutePath.main}

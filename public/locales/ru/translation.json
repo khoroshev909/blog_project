@@ -1,6 +1,8 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "login": "Войти",
+  "lorem": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
   "main": "Главная",
   "about": "О сайте",
   "notFound": "Страница не найдена",

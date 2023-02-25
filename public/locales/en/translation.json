@@ -1,6 +1,8 @@
 {
   "language": "English",
   "shortLang": "En",
+  "login": "Login",
+  "lorem": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
   "main": "Main",
   "about": "About",
   "notFound": "Page not found",
