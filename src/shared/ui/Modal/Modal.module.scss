@@ -21,7 +21,7 @@
 .content {
     display: inline-block;
     max-width: 60%;
-    background: #fff;
+    background: var(--bg-color);
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
