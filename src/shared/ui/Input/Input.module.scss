@@ -1,0 +1,18 @@
+.InputWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.Input {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: 1px solid var(--inverted-bg-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--primary-color);
+
+    &:focus {
+        outline: none;
+    }
+}
