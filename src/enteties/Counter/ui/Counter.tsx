@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActions, getCounterValue } from 'enteties/Counter';
 
-export const Counter = () => {
+export const Counter = memo(() => {
     const dispatch = useDispatch();
     const value = useSelector(getCounterValue);
     const increment = () => {
@@ -29,4 +30,4 @@ export const Counter = () => {
             </Button>
         </div>
     );
-};
+});

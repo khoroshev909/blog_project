@@ -1,6 +1,9 @@
 {
   "language": "English",
   "shortLang": "En",
+  "logout": "Logout",
+  "loginForm": "Login form",
+  "loginError": "Invalid login/password",
   "userName": "Name",
   "password": "Password",
   "login": "Login",

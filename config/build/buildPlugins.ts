@@ -26,6 +26,7 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
             openAnalyzer: false,
         }));
         plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new webpack.DefinePlugin({ __IS_DEV__: true }));
     }
 
     return plugins;

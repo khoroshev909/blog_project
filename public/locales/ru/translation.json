@@ -1,6 +1,9 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "logout": "Выйти",
+  "loginForm": "Форма регистрации",
+  "loginError": "Неверный логин или пароль",
   "userName": "Имя",
   "password": "Пароль",
   "login": "Войти",
