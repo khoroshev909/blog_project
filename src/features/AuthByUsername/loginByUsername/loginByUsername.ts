@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { User, userActions } from 'enteties/User';
-import i18n from 'shared/config/i18n/i18n';
 import { USER_AUTH_DATA_KEY } from 'shared/config/const';
 
 interface loginByUsernamePayload {
