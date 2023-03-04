@@ -1,6 +1,8 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "profile": "Профиль",
+  "profilePage": "Страница профиля",
   "logout": "Выйти",
   "loginForm": "Форма регистрации",
   "loginError": "Неверный логин или пароль",

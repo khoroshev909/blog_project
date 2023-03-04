@@ -21,13 +21,12 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
 
     ];
 
-    plugins.push(new BundleAnalyzerPlugin({
-        openAnalyzer: false,
-    }));
-
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new webpack.DefinePlugin({ __IS_DEV__: true }));
+        plugins.push(new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }));
     }
 
     return plugins;

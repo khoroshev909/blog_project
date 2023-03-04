@@ -1,0 +1,32 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { SidebarItemType } from 'widgets/Sidebar/model/itemsConfig';
+import cls from './SidebarItem.module.scss';
+
+interface SidebarItemProps {
+    className?: string,
+    item: SidebarItemType,
+    collapsed: boolean
+}
+export const SidebarItem = (props: SidebarItemProps) => {
+    const { t } = useTranslation();
+    const {
+        item, collapsed, className,
+    } = props;
+    const { Icon, path, text } = item;
+    const mods = { [cls.collapsed]: collapsed };
+    return (
+        <AppLink
+            className={classNames(cls.item, mods, [className])}
+            to={path}
+            theme={AppLinkTheme.SECONDARY}
+        >
+            <Icon className={cls.icon} />
+            <span className={cls.link}>
+                {t(text)}
+            </span>
+        </AppLink>
+    );
+};

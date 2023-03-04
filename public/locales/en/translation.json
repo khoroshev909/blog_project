@@ -1,6 +1,8 @@
 {
   "language": "English",
   "shortLang": "En",
+  "profile": "Profile",
+  "profilePage": "Profile page",
   "logout": "Logout",
   "loginForm": "Login form",
   "loginError": "Invalid login/password",

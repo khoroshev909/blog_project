@@ -14,7 +14,7 @@ export const DynamicReducerLoader = ({ children, reducers, removeOnUnmount = tru
     useEffect(() => {
         Object.entries(reducers).forEach(([name, reducer]) => {
             store.dispatch({ type: `@INIT ${name} reducer` });
-            store.reducerManager.add('loginForm', reducer);
+            store.reducerManager.add(name as StateKeys, reducer);
         });
 
         return () => {
