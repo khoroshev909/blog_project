@@ -1,6 +1,9 @@
 {
   "language": "English",
   "shortLang": "En",
+  "edit": "Edit",
+  "lastName": "Last name",
+  "firstName": "Last name",
   "profile": "Profile",
   "profilePage": "Profile page",
   "logout": "Logout",

@@ -41,7 +41,7 @@ const LoginForm = memo(({ className, onClose }: LoginFormProps) => {
 
     const clickHandler = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
-        if (result.meta.requestStatus === 'fulfilled') {
+        if (result.meta.requestStatus === 'fulfilled' && onClose) {
             onClose();
         }
     }, [dispatch, username, password, onClose]);

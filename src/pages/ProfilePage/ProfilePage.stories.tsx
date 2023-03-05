@@ -2,8 +2,8 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { THEMES } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StateDecorator';
 import ProfilePage from './ProfilePage';
-import {StoreDecorator} from "shared/config/storybook/StateDecorator";
 
 export default {
     title: 'pages/ProfilePage',

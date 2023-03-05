@@ -1,32 +1,26 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
+import { LoginSchema } from 'features/AuthByUsername';
 import { getLoading } from './getLoading';
 
 describe('getLoading.test', () => {
     test('true', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                loading: true,
-            },
+        const loginForm: DeepPartial<LoginSchema> = {
+            loading: true,
         };
-        expect(getLoading(state as StateSchema)).toEqual(true);
+        expect(getLoading({ loginForm } as StateSchema)).toEqual(true);
     });
 
     test('false', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                loading: false,
-            },
+        const loginForm: DeepPartial<LoginSchema> = {
+            loading: false,
         };
-        expect(getLoading(state as StateSchema)).toEqual(false);
+        expect(getLoading({ loginForm } as StateSchema)).toEqual(false);
     });
 
     test('undefined', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                loading: undefined,
-            },
+        const loginForm: DeepPartial<LoginSchema> = {
+            loading: undefined,
         };
-        expect(getLoading(state as StateSchema)).toEqual(false);
+        expect(getLoading({ loginForm } as StateSchema)).toEqual(false);
     });
 });

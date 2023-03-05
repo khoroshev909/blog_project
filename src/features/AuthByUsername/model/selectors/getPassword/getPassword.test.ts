@@ -1,23 +1,19 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
+import { LoginSchema } from 'features/AuthByUsername';
 import { getPassword } from './getPassword';
 
 describe('getPassword.test', () => {
     test('value', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                password: '123',
-            },
+        const loginForm: DeepPartial<LoginSchema> = {
+            password: '123',
         };
-        expect(getPassword(state as StateSchema)).toEqual('123');
+        expect(getPassword({ loginForm } as StateSchema)).toEqual('123');
     });
 
     test('undefined', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                password: undefined,
-            },
+        const loginForm: DeepPartial<LoginSchema> = {
+            password: undefined,
         };
-        expect(getPassword(state as StateSchema)).toEqual('');
+        expect(getPassword({ loginForm } as StateSchema)).toEqual('');
     });
 });

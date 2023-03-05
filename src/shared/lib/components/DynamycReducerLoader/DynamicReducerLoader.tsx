@@ -19,8 +19,8 @@ export const DynamicReducerLoader = ({ children, reducers, removeOnUnmount = tru
 
         return () => {
             if (removeOnUnmount) {
-                Object.entries(reducers).forEach(([name, _]: [reducerName: StateKeys, reducer: Reducer]) => {
-                    store.reducerManager.remove(name);
+                Object.entries(reducers).forEach(([name, _]) => {
+                    store.reducerManager.remove(name as StateKeys);
                     store.dispatch({ type: `@DESTROY ${name} reducer` });
                 });
             }

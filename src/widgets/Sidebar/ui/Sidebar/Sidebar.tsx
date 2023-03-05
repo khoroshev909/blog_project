@@ -12,7 +12,7 @@ import cls from './Sidebar.module.scss';
 interface SidebarProps {
     className?: string
 }
-export const Sidebar = memo(({ className }: SidebarProps) => {
+export const Sidebar = memo(({ className = '' }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { t } = useTranslation();
     return (

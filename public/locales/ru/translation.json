@@ -1,6 +1,9 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "edit": "Редактировать",
+  "lastName": "Фамилия",
+  "firstName": "Имя",
   "profile": "Профиль",
   "profilePage": "Страница профиля",
   "logout": "Выйти",

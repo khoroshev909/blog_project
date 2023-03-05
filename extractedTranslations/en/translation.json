@@ -1,7 +1,10 @@
 {
   "about": "",
   "bugButton": "",
+  "edit": "",
+  "firstName": "",
   "language": "",
+  "lastName": "",
   "login": "",
   "loginError": "",
   "loginForm": "",
@@ -10,6 +13,7 @@
   "main": "",
   "notFound": "",
   "password": "",
+  "profile": "",
   "profilePage": "",
   "reloadThePage": "",
   "somethingWentWrong": "",

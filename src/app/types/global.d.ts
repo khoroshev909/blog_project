@@ -18,3 +18,7 @@ declare module '*.svg' {
 }
 
 declare let __IS_DEV__: boolean;
+declare let __API__: string;
+declare type DeepPartial<T> = T extends object ? {
+    [P in keyof T]?: DeepPartial<T[P]>;
+} : T;
