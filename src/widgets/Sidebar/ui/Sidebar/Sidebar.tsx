@@ -3,7 +3,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { Button, ButtonTheme, ButtonSize } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { useTranslation } from 'react-i18next';
 import { BugButton } from 'widgets/BugButton';
 import { SidebarItem } from 'widgets/Sidebar/ui/SidebatItem/SidebarItem';
 import { itemsConfig } from '../../model/itemsConfig';
@@ -14,7 +13,6 @@ interface SidebarProps {
 }
 export const Sidebar = memo(({ className = '' }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
-    const { t } = useTranslation();
     return (
         <div
             data-testid="sidebar"

@@ -1,17 +1,18 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import {
-    ChangeEvent, InputHTMLAttributes, useEffect, useRef, memo, LegacyRef,
+    ChangeEvent, InputHTMLAttributes, useEffect, useRef, memo,
 } from 'react';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 interface InputProps extends HTMLInputProps {
     className?: string,
     value?: string,
     onChange?: (val: string) => void,
     type?: string,
     placeholder?: string,
-    modal?: boolean
+    modal?: boolean,
+    readOnly?: boolean
 }
 export const Input = memo((props: InputProps) => {
     const {
@@ -19,6 +20,7 @@ export const Input = memo((props: InputProps) => {
         autoFocus,
         value,
         onChange,
+        readOnly,
         type = 'text',
         placeholder,
         ...rest
@@ -36,14 +38,19 @@ export const Input = memo((props: InputProps) => {
         }
     }, [autoFocus]);
 
+    const mods: Mods = {
+        [cls.readonly]: readOnly,
+    };
+
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div>{placeholder}</div>
             )}
             <input
                 ref={inputRef}
                 className={cls.Input}
+                readOnly={readOnly}
                 {...rest}
                 type={type}
                 value={value}

@@ -16,3 +16,11 @@
         outline: none;
     }
 }
+
+.readonly {
+    opacity: 0.5;
+
+    input {
+        cursor: not-allowed;
+    }
+}

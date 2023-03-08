@@ -14,6 +14,12 @@
     background: none;
 }
 
+.red {
+    color: var(--red-primary);
+    border: 1px solid var(--red-primary);
+    padding: 10px 15px;
+}
+
 .clear-inverted {
     color: var(--inverted-primary-color);
 }

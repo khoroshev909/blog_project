@@ -6,6 +6,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData } from 'enteties/User/model/selectors/getUserAuthData';
 import { userActions } from 'enteties/User';
+import { useNavigate } from 'react-router-dom';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -14,12 +15,14 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const closeModal = useCallback(() => setIsAuthModal(false), []);
     const user = useSelector(getUserAuthData);
 
     const logoutHandler = () => {
         dispatch(userActions.logout());
+        navigate('/');
     };
 
     if (!user) {

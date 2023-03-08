@@ -1,6 +1,19 @@
 {
+  "Oops": {
+    "": {
+      "": {
+        " Sometning went wrong": ""
+      }
+    }
+  },
+  "Try to reload the page": "",
   "about": "",
+  "age": "",
+  "avatar": "",
   "bugButton": "",
+  "cancel": "",
+  "city": "",
+  "country": "",
   "edit": "",
   "firstName": "",
   "language": "",
@@ -16,7 +29,9 @@
   "profile": "",
   "profilePage": "",
   "reloadThePage": "",
+  "save": "",
   "somethingWentWrong": "",
   "toggle": "",
-  "userName": ""
+  "userName": "",
+  "username": ""
 }

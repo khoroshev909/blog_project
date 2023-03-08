@@ -14,9 +14,9 @@ const userSlice = createSlice({
             state.authData = action.payload;
         },
         initAuthData(state) {
-            const user = JSON.parse(localStorage.getItem(USER_AUTH_DATA_KEY) || '');
+            const user = localStorage.getItem(USER_AUTH_DATA_KEY);
             if (user) {
-                state.authData = user;
+                state.authData = JSON.parse(user);
             }
         },
         logout(state) {
