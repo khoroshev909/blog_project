@@ -54,6 +54,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
         }
     }, [onChangeCountry]);
 
+    const changeAgeHandler = useCallback((val: string) => {
+        if (!Number.isNaN(+val) && +val >= 0 && onChangeAge) {
+            onChangeAge(val);
+        }
+    }, [onChangeAge]);
+
     if (error) {
         return (
             <div className={classNames('', {}, [className, cls.error])}>
@@ -102,7 +108,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     value={String(data?.age)}
                     placeholder={t('age')}
                     className={cls.input}
-                    onChange={onChangeAge}
+                    onChange={changeAgeHandler}
                     readOnly={readonly}
                 />
                 <Input

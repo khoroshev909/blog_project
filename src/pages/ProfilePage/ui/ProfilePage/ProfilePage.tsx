@@ -8,9 +8,11 @@ import { getProfileReadonly } from 'pages/ProfilePage/model/selectors/getProfile
 import { getProfileForm } from 'pages/ProfilePage/model/selectors/getProfileForm/getProfileForm';
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';
-import { profileReducer, profileActions } from '../../model/slice/profileSlice';
+import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../services/fetchProfileData/fetchProfileData';
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
@@ -26,6 +28,7 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
     const loading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getValidateErrors);
 
     const onChangeFirstName = (val: string) => {
         dispatch(profileActions.setProfileFormData({ ...formData, first: val }));
@@ -56,12 +59,17 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
     };
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
     return (
         <DynamicReducerLoader reducers={reducers}>
             {formData && (
                 <div className={classNames('', {}, [className])}>
+                    {!!validateErrors?.length && validateErrors.map((error) => (
+                        <Text key={error} text={error} theme={TextTheme.ERROR} />
+                    ))}
                     <ProfilePageHeader readonly={readonly} />
                     <ProfileCard
                         data={formData}

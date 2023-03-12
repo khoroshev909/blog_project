@@ -21,6 +21,7 @@ export default {
     globals: {
         __IS_DEV__: true,
         __API__: '',
+        __PROJECT__: JSON.stringify('jest'),
     },
     coveragePathIgnorePatterns: [
         '\\\\node_modules\\\\',

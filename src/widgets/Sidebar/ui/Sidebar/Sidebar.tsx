@@ -3,7 +3,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { Button, ButtonTheme, ButtonSize } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { BugButton } from 'widgets/BugButton';
 import { SidebarItem } from 'widgets/Sidebar/ui/SidebatItem/SidebarItem';
 import { itemsConfig } from '../../model/itemsConfig';
 import cls from './Sidebar.module.scss';
@@ -19,7 +18,6 @@ export const Sidebar = memo(({ className = '' }: SidebarProps) => {
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
             <div className={cls.items}>
-                <BugButton />
                 {itemsConfig.map((item) => (
                     <SidebarItem
                         key={item.path}
