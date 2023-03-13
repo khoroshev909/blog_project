@@ -1,34 +1,29 @@
-import React, { Suspense, useMemo } from 'react';
+import React, { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { AppRoureProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { PageLoader } from 'widgets/PageLoader';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'enteties/User/model/selectors/getUserAuthData';
+import { RequireAuth } from 'app/routes/ui/RequreAuth';
 
 export const AppRoutes = () => {
-    const isLoggedIn = useSelector(getUserAuthData);
-
-    const routes = useMemo(() => Object.values(routeConfig).filter((route) => {
-        if (route?.needAuth && !isLoggedIn) {
-            return false;
-        }
-        return true;
-    }), [isLoggedIn]);
+    const guardRoutes = useCallback((route: AppRoureProps) => {
+        const element = (
+            <Suspense fallback={<PageLoader />}>
+                <div className="page-wrapper">{route.element}</div>
+                {' '}
+            </Suspense>
+        );
+        return (
+            <Route
+                key={route.path}
+                path={route.path}
+                element={route.needAuth ? <RequireAuth>{element}</RequireAuth> : element}
+            />
+        );
+    }, []);
 
     return (
         <Routes>
-            {routes.map(({ element, path }) => (
-                <Route
-                    key={path}
-                    path={path}
-                    element={(
-                        <Suspense fallback={<PageLoader />}>
-                            <div className="page-wrapper">{element}</div>
-                            {' '}
-                        </Suspense>
-                    )}
-                />
-            ))}
+            {Object.values(routeConfig).map(guardRoutes)}
         </Routes>
     );
 };

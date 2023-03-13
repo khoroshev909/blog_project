@@ -9,6 +9,7 @@ import { getProfileForm } from 'pages/ProfilePage/model/selectors/getProfileForm
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { getProfileData } from 'pages/ProfilePage/model/selectors/getProfileData/getProfileData';
 import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';
@@ -25,6 +26,7 @@ const reducers: reducerList = { profile: profileReducer };
 const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) => {
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
+    const data = useSelector(getProfileData);
     const loading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
@@ -65,27 +67,25 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
     }, [dispatch]);
     return (
         <DynamicReducerLoader reducers={reducers}>
-            {formData && (
-                <div className={classNames('', {}, [className])}>
-                    {!!validateErrors?.length && validateErrors.map((error) => (
-                        <Text key={error} text={error} theme={TextTheme.ERROR} />
-                    ))}
-                    <ProfilePageHeader readonly={readonly} />
-                    <ProfileCard
-                        data={formData}
-                        error={error}
-                        loading={loading}
-                        onChangeUsername={onChangeUsername}
-                        onCurrencyChange={onCurrencyChange}
-                        onChangeAvatar={onChangeAvatar}
-                        onChangeFirstName={onChangeFirstName}
-                        onChangeLastName={onChangeLastName}
-                        onChangeAge={onChangeAge}
-                        onChangeCountry={onChangeCountry}
-                        readonly={readonly}
-                    />
-                </div>
-            )}
+            <div className={classNames('', {}, [className])}>
+                {!!validateErrors?.length && validateErrors.map((error) => (
+                    <Text key={error} text={error} theme={TextTheme.ERROR} />
+                ))}
+                <ProfilePageHeader readonly={readonly} />
+                <ProfileCard
+                    data={data}
+                    error={error}
+                    loading={loading}
+                    onChangeUsername={onChangeUsername}
+                    onCurrencyChange={onCurrencyChange}
+                    onChangeAvatar={onChangeAvatar}
+                    onChangeFirstName={onChangeFirstName}
+                    onChangeLastName={onChangeLastName}
+                    onChangeAge={onChangeAge}
+                    onChangeCountry={onChangeCountry}
+                    readonly={readonly}
+                />
+            </div>
         </DynamicReducerLoader>
     );
 });

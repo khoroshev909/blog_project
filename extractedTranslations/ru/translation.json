@@ -1,0 +1,31 @@
+{
+  "Oops": {
+    "": {
+      "": {
+        " Sometning went wrong": " Sometning went wrong"
+      }
+    }
+  },
+  "Try to reload the page": "Try to reload the page",
+  "aboutContent": "aboutContent",
+  "age": "age",
+  "avatar": "avatar",
+  "cancel": "cancel",
+  "country": "country",
+  "currency": "currency",
+  "edit": "edit",
+  "firstName": "firstName",
+  "lastName": "lastName",
+  "login": "login",
+  "loginForm": "loginForm",
+  "logout": "logout",
+  "mainContent": "mainContent",
+  "notFound": "notFound",
+  "password": "password",
+  "profile": "profile",
+  "reloadThePage": "reloadThePage",
+  "save": "save",
+  "somethingWentWrong": "somethingWentWrong",
+  "userName": "userName",
+  "username": "username"
+}

@@ -6,12 +6,13 @@ import { AppRoutes } from 'app/routes';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import 'shared/config/i18n/i18n';
-import { useDispatch } from 'react-redux';
-import { userActions } from 'enteties/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuthMounted, userActions } from 'enteties/User';
 
 const App = () => {
     const { theme } = useTheme();
     const dispatch = useDispatch();
+    const isMounted = useSelector(getAuthMounted);
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
@@ -21,7 +22,7 @@ const App = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    <AppRoutes />
+                    {isMounted && <AppRoutes />}
                 </div>
             </Suspense>
         </div>
