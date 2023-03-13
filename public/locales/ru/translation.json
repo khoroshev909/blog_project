@@ -1,6 +1,8 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "articleDetails": "Статья",
+  "articleList": "Статьи",
   "edit": "Редактировать",
   "currency": "Валюта",
   "age": "Возраст",

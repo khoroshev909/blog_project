@@ -25,10 +25,5 @@ export default (env: BuildEnv) => {
         project: 'frontend',
     });
 
-    // if (isDev) {
-    //     config.plugins?.push(new ReactRefreshPlugin());
-    //     config.plugins?.push(new webpack.HotModuleReplacementPlugin());
-    // }
-
     return config;
 };
