@@ -10,6 +10,7 @@ import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { getProfileData } from 'pages/ProfilePage/model/selectors/getProfileData/getProfileData';
+import { PageLoader } from 'widgets/PageLoader';
 import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';

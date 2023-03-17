@@ -1,6 +1,7 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "articleNotFound": "Статья не найдена",
   "articleDetails": "Статья",
   "articleList": "Статьи",
   "edit": "Редактировать",
