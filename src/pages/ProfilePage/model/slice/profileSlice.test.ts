@@ -24,7 +24,7 @@ describe('profileSlice.test', () => {
         };
         expect(profileReducer(
             state as ProfileSchema,
-            fetchProfileData.fulfilled({ ...data, first: 'Alex' }, ''),
+            fetchProfileData.fulfilled({ ...data, first: 'Alex' }, '1', ''),
         )).toEqual({
             loading: false,
             form: { ...data, first: 'Alex' },
@@ -39,7 +39,7 @@ describe('profileSlice.test', () => {
         };
         expect(profileReducer(
             state as ProfileSchema,
-            fetchProfileData.pending(''),
+            fetchProfileData.pending('1', ''),
         )).toEqual({
             loading: true,
             error: undefined,

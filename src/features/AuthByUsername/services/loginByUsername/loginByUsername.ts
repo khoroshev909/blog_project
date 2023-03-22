@@ -22,7 +22,7 @@ export const loginByUsername = createAsyncThunk<User, loginByUsernamePayload, Th
             localStorage.setItem(USER_AUTH_DATA_KEY, JSON.stringify(response.data));
             thunkAPI.dispatch(userActions.setAuthData(response.data));
             if (navigate) {
-                navigate('/profile');
+                navigate(`/profile/${response.data.id}`);
             }
             return response.data;
         } catch (e) {

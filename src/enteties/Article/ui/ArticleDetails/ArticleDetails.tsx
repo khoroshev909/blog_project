@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { getArticleDetailsData } from 'enteties/Article/model/selectors/getArticleDetailsData';
 import { getArticleDetailsError } from 'enteties/Article/model/selectors/getArticleDetailsError';
@@ -13,6 +13,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Icon } from 'shared/ui/Icon/Icon';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
+import useInitialEffect from 'shared/hooks/useInitialEffect';
 import { ArticleCodeBlockComponent } from '../../ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../../ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -36,11 +37,9 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     const data = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
     const loading = useSelector(getArticleDetailsLoading);
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id));
-        }
-    }, [id, dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(id));
+    });
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {

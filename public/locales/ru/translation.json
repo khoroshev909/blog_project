@@ -1,6 +1,9 @@
 {
   "language": "Русский",
   "shortLang": "Ru",
+  "add": "Добавить",
+  "comments": "Комментарии",
+  "noComments": "Комментарии отсутствуют",
   "articleNotFound": "Статья не найдена",
   "articleDetails": "Статья",
   "articleList": "Статьи",

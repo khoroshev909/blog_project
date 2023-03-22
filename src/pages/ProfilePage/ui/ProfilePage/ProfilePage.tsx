@@ -9,8 +9,8 @@ import { getProfileForm } from 'pages/ProfilePage/model/selectors/getProfileForm
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { getProfileData } from 'pages/ProfilePage/model/selectors/getProfileData/getProfileData';
-import { PageLoader } from 'widgets/PageLoader';
+import { useParams } from 'react-router-dom';
+import useInitialEffect from 'shared/hooks/useInitialEffect';
 import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';
@@ -25,9 +25,9 @@ interface ProfilePageProps {
 const reducers: reducerList = { profile: profileReducer };
 
 const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) => {
+    const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
-    const data = useSelector(getProfileData);
     const loading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
@@ -61,11 +61,12 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
         dispatch(profileActions.setProfileFormData({ ...formData, avatar: val }));
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
+
     return (
         <DynamicReducerLoader reducers={reducers}>
             <div className={classNames('', {}, [className])}>
@@ -74,7 +75,7 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
                 ))}
                 <ProfilePageHeader readonly={readonly} />
                 <ProfileCard
-                    data={data}
+                    data={formData}
                     error={error}
                     loading={loading}
                     onChangeUsername={onChangeUsername}

@@ -5,9 +5,9 @@ import { validateProfileErrors } from 'pages/ProfilePage/services/validateProfil
 import { profileActions } from 'pages/ProfilePage/model/slice/profileSlice';
 import { Profile } from '../../model/types/profile';
 
-export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig>(
+export const updateProfileData = createAsyncThunk<Profile, string, ThunkConfig>(
     'profile/updateProfileData',
-    async (_, thunkAPI) => {
+    async (profileId, thunkAPI) => {
         const { api } = thunkAPI.extra;
         const formData = getProfileForm(thunkAPI.getState());
         const errors = validateProfileErrors(formData!);
@@ -16,7 +16,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig>(
             throw Error;
         }
         try {
-            const response = await api.put('/profile', formData);
+            const response = await api.put(`/profile/${profileId}`, formData);
 
             if (!response?.data) {
                 throw Error();

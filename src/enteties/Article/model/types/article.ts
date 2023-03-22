@@ -34,6 +34,7 @@ export enum ArticleTypes {
 }
 export interface Article {
     id: string;
+    userId: string,
     title: string;
     subtitle: string;
     img: string;

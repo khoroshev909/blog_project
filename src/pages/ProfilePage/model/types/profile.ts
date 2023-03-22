@@ -2,6 +2,7 @@ import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
 
 export interface Profile {
+    id?: string,
     first?: string;
     lastname?: string;
     age?: number;

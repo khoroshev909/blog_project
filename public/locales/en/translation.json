@@ -1,6 +1,9 @@
 {
   "language": "English",
   "shortLang": "En",
+  "add": "Add",
+  "comments": "Comments",
+  "noComments": "No comments",
   "articleNotFound": "Article Not Found",
   "articleDetails": "Article details",
   "articleList": "Articles",

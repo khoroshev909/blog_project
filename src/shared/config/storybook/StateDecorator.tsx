@@ -4,11 +4,13 @@ import { loginReducer } from 'features/AuthByUsername';
 import { reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { profileReducer } from 'pages/ProfilePage/model/slice/profileSlice';
 import { articleDetailsReducer } from 'enteties/Article/model/slice/articleDetailsSlice';
+import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
 
 const defaultAsyncReducers: reducerList = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
+    articleDetailsComments: articleDetailsCommentsReducer,
 };
 export const StoreDecorator = (
     state: DeepPartial<StateSchema>,
