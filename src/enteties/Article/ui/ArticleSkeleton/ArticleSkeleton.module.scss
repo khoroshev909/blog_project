@@ -1,0 +1,62 @@
+.SMALL {
+    .card {
+        width: 230px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+    .imageWrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    .infoWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.BIG {
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .author {
+        display: flex;
+        align-items: center;
+
+        .username {
+            margin-left: 10px;
+        }
+    }
+
+    .title {
+        margin-bottom: 10px;
+    }
+
+    .image {
+        margin-bottom: 10px;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}

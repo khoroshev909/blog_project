@@ -103,90 +103,6 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "",
-      "id": "YFdjgut"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "dfvsfvbdfb",
-      "id": "jMg9reN"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "fvdvdgb",
-      "id": "jsFrPJ1"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "333",
-      "id": "LDbD91k"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "444",
-      "id": "jh8qsWk"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "555",
-      "id": "jT1MMoB"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "666",
-      "id": "uQ0P86d"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "777",
-      "id": "ywo57oP"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "888",
-      "id": "nQSTIBP"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "999",
-      "id": "OtN65wN"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "10",
-      "id": "NjOGSYP"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "4848",
-      "id": "rBuEm_O"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "555",
-      "id": "vR2xyEx"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "vfdbfdb",
-      "id": "V0bR45_"
     }
   ],
   "users": [
@@ -195,7 +111,7 @@
       "username": "admin",
       "password": "123",
       "role": "ADMIN",
-      "avatar": "https://avatars.mds.yandex.net/i?id=8dff73fec96ef7bfce66de8320a3a3ef147dfbc0-4614822-images-thumbs&n=13&exp=1"
+      "avatar": "https://avatars.mds.yandex.net/i?id=81c7cc9201b1d188d6e3379b0392db573a01ae15-8497946-images-thumbs&n=13&exp=1"
     },
     {
       "id": "2",

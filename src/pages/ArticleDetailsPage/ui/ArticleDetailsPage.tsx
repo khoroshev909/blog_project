@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleDetails } from 'enteties/Article';
+import { ArticleDetails, getArticleDetailsData } from 'enteties/Article';
 import { Text } from 'shared/ui/Text/Text';
 import {
     articleDetailsCommentsReducer,
@@ -20,8 +20,10 @@ import { useCallback } from 'react';
 import {
     addCommentForArticle,
 } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { Button } from 'shared/ui/Button/Button';
 import cls from './ArticleDetailsPage.module.scss';
+import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -36,7 +38,12 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
     const comments = useSelector(getArticleComments.selectAll);
     const loading = useSelector(getArticleCommentsLoading);
+    const articleData = useSelector(getArticleDetailsData);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const goBack = () => {
+        navigate(String(routeConfig.article_list.path));
+    };
 
     useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)));
 
@@ -52,20 +59,27 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
+            <Button onClick={goBack}>
+                {t('backToArticles')}
+            </Button>
             <div className={classNames('', {}, [className])}>
                 <ArticleDetails id={id} />
-                <Text
-                    className={cls.comments}
-                    title={t('comments')}
-                />
-                <AddCommentForm
-                    className={cls.commentForm}
-                    onAddComment={onAddComment}
-                />
-                <CommentList
-                    comments={comments}
-                    loading={loading!}
-                />
+                {articleData && (
+                    <>
+                        <Text
+                            className={cls.comments}
+                            title={t('comments')}
+                        />
+                        <AddCommentForm
+                            className={cls.commentForm}
+                            onAddComment={onAddComment}
+                        />
+                        <CommentList
+                            comments={comments}
+                            loading={loading!}
+                        />
+                    </>
+                )}
             </div>
         </DynamicReducerLoader>
     );

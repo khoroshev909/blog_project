@@ -3,8 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { Button, ButtonTheme, ButtonSize } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebatItem/SidebarItem';
 import { useSelector } from 'react-redux';
+import { SidebarItem } from '../SidebatItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import cls from './Sidebar.module.scss';
 

@@ -5,7 +5,7 @@ import { ArticleBlockType, ArticleTypes } from 'enteties/Article/model/types/art
 import { ArticleDetails } from './ArticleDetails';
 
 export default {
-    title: 'enteties/Article',
+    title: 'enteties/ArticleDetails',
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: 'color' },
