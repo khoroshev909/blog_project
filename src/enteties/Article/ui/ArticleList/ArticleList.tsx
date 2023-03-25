@@ -1,5 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { Text } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import cls from './ArticleList.module.scss';
@@ -25,6 +27,7 @@ const renderSkeletons = (view: ArticleView) => (
 export const ArticleList = memo(({
     className, articles, loading, view = ArticleView.SMALL,
 }: ArticleListProps) => {
+    const { t } = useTranslation();
     if (loading) {
         return renderSkeletons(view);
     }
@@ -41,10 +44,10 @@ export const ArticleList = memo(({
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
             {articles.length ? (
-                new Array(16).fill(0).map((_, idx) => (
-                    { ...articles[0], id: String(idx) }
-                )).map(renderArticle)
-            ) : null}
+                articles.map(renderArticle)
+            ) : (
+                <Text title={t('noArticles')} />
+            )}
         </div>
     );
 });

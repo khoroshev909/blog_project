@@ -1,0 +1,10 @@
+.EntetiesView {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.active {
+    fill: var(--inverted-primary-color);
+}
