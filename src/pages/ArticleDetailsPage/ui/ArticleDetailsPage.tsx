@@ -22,6 +22,7 @@ import {
 } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { Button } from 'shared/ui/Button/Button';
+import { Page } from 'shared/ui/Page/Page';
 import cls from './ArticleDetailsPage.module.scss';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
@@ -59,28 +60,30 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <Button onClick={goBack}>
-                {t('backToArticles')}
-            </Button>
-            <div className={classNames('', {}, [className])}>
-                <ArticleDetails id={id} />
-                {articleData && (
-                    <>
-                        <Text
-                            className={cls.comments}
-                            title={t('comments')}
-                        />
-                        <AddCommentForm
-                            className={cls.commentForm}
-                            onAddComment={onAddComment}
-                        />
-                        <CommentList
-                            comments={comments}
-                            loading={loading!}
-                        />
-                    </>
-                )}
-            </div>
+            <Page>
+                <Button onClick={goBack}>
+                    {t('backToArticles')}
+                </Button>
+                <div className={classNames('', {}, [className])}>
+                    <ArticleDetails id={id} />
+                    {articleData && (
+                        <>
+                            <Text
+                                className={cls.comments}
+                                title={t('comments')}
+                            />
+                            <AddCommentForm
+                                className={cls.commentForm}
+                                onAddComment={onAddComment}
+                            />
+                            <CommentList
+                                comments={comments}
+                                loading={loading!}
+                            />
+                        </>
+                    )}
+                </div>
+            </Page>
         </DynamicReducerLoader>
     );
 };

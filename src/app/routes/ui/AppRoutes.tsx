@@ -8,7 +8,7 @@ export const AppRoutes = () => {
     const guardRoutes = useCallback((route: AppRoureProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>
-                <div className="page-wrapper">{route.element}</div>
+                {route.element}
                 {' '}
             </Suspense>
         );

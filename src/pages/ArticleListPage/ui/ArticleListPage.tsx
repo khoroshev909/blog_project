@@ -6,39 +6,59 @@ import { DynamicReducerLoader, reducerList } from 'shared/lib/components/Dynamyc
 import { useSelector } from 'react-redux';
 import { EntetiesView } from 'features/EntetiesView';
 import { useCallback } from 'react';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlePage } from 'pages/ArticleListPage/model/services/fetchNextArticlePage/fetchNextArticlePage';
+import { Error } from 'shared/ui/Error/Error';
+import { Text } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 import {
+    getArticleListError,
     getArticleListLoading,
     getArticleListView,
-    getArticleListError,
 } from '../model/selectors/articleListSelectors';
-import { fetchArticleList } from '../model/services/fetchArticleList';
+import { fetchArticleList } from '../model/services/fetchArticleList/fetchArticleList';
 import { articleListActions, articleListReducer, getArticleList } from '../model/slices/articleListReducer';
 
 interface ArticleListPageProps {
     className?: string
 }
 
+const reducers: reducerList = {
+    articleList: articleListReducer,
+};
+
 const ArticleListPage = ({ className }: ArticleListPageProps) => {
+    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const view = useSelector(getArticleListView);
     const loading = useSelector(getArticleListLoading);
+    const articles = useSelector(getArticleList.selectAll);
     const error = useSelector(getArticleListError);
 
-    const articles = useSelector(getArticleList.selectAll);
+    useInitialEffect(() => dispatch(fetchArticleList({ page: 1 })));
 
-    useInitialEffect(() => dispatch(fetchArticleList()));
-
-    const reducers: reducerList = {
-        articleList: articleListReducer,
-    };
+    const onAddNewPage = useCallback(() => {
+        dispatch(fetchNextArticlePage());
+    }, [dispatch]);
 
     const changeViewHandler = useCallback((view: ArticleView) => {
+        dispatch(articleListActions.setLimit(view));
         dispatch(articleListActions.setView(view));
     }, [dispatch]);
 
+    if (error) {
+        return <Error />;
+    }
+
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <div className={classNames('', {}, [className])}>
+            <Page
+                onScrollEnd={onAddNewPage}
+                className={classNames('', {}, [className])}
+            >
+                {!loading && !articles.length && (
+                    <Text title={t('noArticles')} />
+                )}
                 <EntetiesView
                     view={view!}
                     changeView={changeViewHandler}
@@ -48,7 +68,7 @@ const ArticleListPage = ({ className }: ArticleListPageProps) => {
                     loading={loading!}
                     view={view}
                 />
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 };

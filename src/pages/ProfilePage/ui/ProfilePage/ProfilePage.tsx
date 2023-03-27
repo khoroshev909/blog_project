@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { ProfileCard } from 'enteties/Profile';
@@ -11,6 +11,7 @@ import { Countries } from 'enteties/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useParams } from 'react-router-dom';
 import useInitialEffect from 'shared/hooks/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';
@@ -69,7 +70,7 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 {!!validateErrors?.length && validateErrors.map((error) => (
                     <Text key={error} text={error} theme={TextTheme.ERROR} />
                 ))}
@@ -87,7 +88,7 @@ const ProfilePage:FC<ProfilePageProps> = memo(({ className }: ProfilePageProps) 
                     onChangeCountry={onChangeCountry}
                     readonly={readonly}
                 />
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 });

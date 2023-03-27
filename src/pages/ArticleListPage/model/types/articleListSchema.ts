@@ -4,5 +4,8 @@ import { Article, ArticleView } from 'enteties/Article';
 export interface ArticleListSchema extends EntityState<Article> {
     loading: boolean,
     error: string | undefined,
-    view: ArticleView
+    view: ArticleView,
+    limit: number,
+    page: number,
+    hasMore: boolean
 }

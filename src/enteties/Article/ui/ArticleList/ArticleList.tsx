@@ -16,7 +16,7 @@ interface ArticleListProps {
 
 const renderSkeletons = (view: ArticleView) => (
     <div className={classNames(cls.ArticleList, {}, ['', cls[view]])}>
-        {new Array(view === ArticleView.BIG ? 3 : 16)
+        {new Array(view === ArticleView.BIG ? 4 : 9)
             .fill('')
             .map((_, idx) => (
                 <ArticleSkeleton key={idx} view={view} />
@@ -28,9 +28,6 @@ export const ArticleList = memo(({
     className, articles, loading, view = ArticleView.SMALL,
 }: ArticleListProps) => {
     const { t } = useTranslation();
-    if (loading) {
-        return renderSkeletons(view);
-    }
 
     const renderArticle = (article: Article) => (
         <ArticleItem
@@ -45,9 +42,8 @@ export const ArticleList = memo(({
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
             {articles.length ? (
                 articles.map(renderArticle)
-            ) : (
-                <Text title={t('noArticles')} />
-            )}
+            ) : null}
+            {loading && renderSkeletons(view)}
         </div>
     );
 });

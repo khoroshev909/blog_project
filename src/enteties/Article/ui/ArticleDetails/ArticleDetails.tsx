@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
@@ -7,13 +6,14 @@ import { useSelector } from 'react-redux';
 import { getArticleDetailsData } from 'enteties/Article/model/selectors/getArticleDetailsData';
 import { getArticleDetailsError } from 'enteties/Article/model/selectors/getArticleDetailsError';
 import { getArticleDetailsLoading } from 'enteties/Article/model/selectors/getArticleDetailsLoading';
-import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Icon } from 'shared/ui/Icon/Icon';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import useInitialEffect from 'shared/hooks/useInitialEffect';
+import { Error } from 'shared/ui/Error/Error';
 import { ArticleCodeBlockComponent } from '../../ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../../ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -32,7 +32,6 @@ const reducers: reducerList = {
 };
 
 export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
-    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const data = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
@@ -84,15 +83,7 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     }
 
     if (error) {
-        content = (
-            <div className={classNames('', {}, [className, cls.error])}>
-                <Text
-                    title={t('Oops... Sometning went wrong')}
-                    text={t('Try to reload the page')}
-                    align={TextAlign.CENTER}
-                />
-            </div>
-        );
+        content = <Error />;
     }
 
     if (data) {
