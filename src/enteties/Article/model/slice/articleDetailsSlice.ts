@@ -12,7 +12,11 @@ const initialState: ArticleDetailsSchema = {
 const articleDetailsSlice = createSlice({
     name: 'article',
     initialState,
-    reducers: {},
+    reducers: {
+        clearArticleDetails(state) {
+            state.data = undefined;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchArticleById.fulfilled, (state, action: PayloadAction<Article>) => {

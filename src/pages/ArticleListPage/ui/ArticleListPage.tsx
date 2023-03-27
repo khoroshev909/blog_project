@@ -7,17 +7,17 @@ import { useSelector } from 'react-redux';
 import { EntetiesView } from 'features/EntetiesView';
 import { useCallback } from 'react';
 import { Page } from 'shared/ui/Page/Page';
-import { fetchNextArticlePage } from 'pages/ArticleListPage/model/services/fetchNextArticlePage/fetchNextArticlePage';
 import { Error } from 'shared/ui/Error/Error';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { fetchNextArticlePage } from '../model/services/fetchNextArticlePage/fetchNextArticlePage';
 import {
     getArticleListError,
     getArticleListLoading,
     getArticleListView,
 } from '../model/selectors/articleListSelectors';
-import { fetchArticleList } from '../model/services/fetchArticleList/fetchArticleList';
 import { articleListActions, articleListReducer, getArticleList } from '../model/slices/articleListReducer';
+import { initArticleListPage } from '../model/services/initArticleListPage/initArticleListPage';
 
 interface ArticleListPageProps {
     className?: string
@@ -35,7 +35,9 @@ const ArticleListPage = ({ className }: ArticleListPageProps) => {
     const articles = useSelector(getArticleList.selectAll);
     const error = useSelector(getArticleListError);
 
-    useInitialEffect(() => dispatch(fetchArticleList({ page: 1 })));
+    useInitialEffect(() => {
+        dispatch(initArticleListPage());
+    });
 
     const onAddNewPage = useCallback(() => {
         dispatch(fetchNextArticlePage());

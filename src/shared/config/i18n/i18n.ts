@@ -10,7 +10,8 @@ i18n
     .init({
         fallbackLng: 'ru',
         lng: 'ru',
-        debug: __IS_DEV__,
+        debug: false,
+        // debug: __IS_DEV__,
     });
 
 export default i18n;

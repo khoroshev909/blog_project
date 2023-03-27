@@ -9,12 +9,15 @@ interface DynamicReducerProps {
     removeOnUnmount?: boolean,
     reducers: reducerList
 }
-export const DynamicReducerLoader = ({ children, reducers, removeOnUnmount = true }: DynamicReducerProps) => {
+export const DynamicReducerLoader = ({ children, reducers, removeOnUnmount = false }: DynamicReducerProps) => {
     const store = useStore() as ReduxStoreWithManager;
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]) => {
-            store.dispatch({ type: `@INIT ${name} reducer` });
-            store.reducerManager.add(name as StateKeys, reducer);
+        const activeReducers = store.reducerManager.getReducerMap();
+        Object.entries(reducers).forEach(([reducerName, reducer]) => {
+            if (!activeReducers[reducerName as StateKeys]) {
+                store.dispatch({ type: `@INIT ${reducerName} reducer` });
+                store.reducerManager.add(reducerName as StateKeys, reducer);
+            }
         });
 
         return () => {

@@ -3,10 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetails, getArticleDetailsData } from 'enteties/Article';
 import { Text } from 'shared/ui/Text/Text';
-import {
-    articleDetailsCommentsReducer,
-    getArticleComments,
-} from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
 import { useSelector } from 'react-redux';
 import { DynamicReducerLoader, reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { CommentList } from 'enteties/Comment';
@@ -16,13 +12,19 @@ import {
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import useInitialEffect from 'shared/hooks/useInitialEffect';
 import { AddCommentForm } from 'features/AddCommentForm';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import {
     addCommentForArticle,
 } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { Button } from 'shared/ui/Button/Button';
 import { Page } from 'shared/ui/Page/Page';
+import { articleDetailsActions } from 'enteties/Article/model/slice/articleDetailsSlice';
+import {
+    articleDetailsCommentsActions,
+    articleDetailsCommentsReducer,
+    getArticleComments,
+} from '../model/slice/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
@@ -47,6 +49,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     };
 
     useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)));
+
+    useEffect(() => () => {
+        dispatch(articleDetailsActions.clearArticleDetails());
+        dispatch(articleDetailsCommentsActions.clearComments());
+    }, [dispatch]);
 
     const onAddComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));

@@ -11,7 +11,7 @@ interface loginByUsernamePayload {
 export const loginByUsername = createAsyncThunk<User, loginByUsernamePayload, ThunkConfig>(
     'login/loginByUsername',
     async (payload, thunkAPI) => {
-        const { api, navigate } = thunkAPI.extra;
+        const { api } = thunkAPI.extra;
         try {
             const response = await api.post('/login', payload);
 
@@ -21,9 +21,6 @@ export const loginByUsername = createAsyncThunk<User, loginByUsernamePayload, Th
 
             localStorage.setItem(USER_AUTH_DATA_KEY, JSON.stringify(response.data));
             thunkAPI.dispatch(userActions.setAuthData(response.data));
-            if (navigate) {
-                navigate(`/profile/${response.data.id}`);
-            }
             return response.data;
         } catch (e) {
             return thunkAPI.rejectWithValue('loginError');

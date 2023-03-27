@@ -6,3 +6,4 @@ export const getArticleListError = (state: StateSchema) => state.articleList?.er
 export const getArticleListLimit = (state: StateSchema) => state.articleList?.limit || 9;
 export const getArticleListPage = (state: StateSchema) => state.articleList?.page || 1;
 export const getArticleListHasMore = (state: StateSchema) => state.articleList?.hasMore;
+export const getArticleListInit = (state: StateSchema) => state.articleList?._init;
