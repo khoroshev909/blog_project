@@ -5,15 +5,16 @@ import {
 } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'pages/ProfilePage';
 import { AxiosInstance } from 'axios';
-import { To } from 'history';
-import { NavigateOptions } from 'react-router';
 import { ArticleDetailsSchema } from 'enteties/Article/model/types/articleSchema';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentsSchema';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticleListSchema } from 'pages/ArticleListPage';
+import { ScrollSchema } from 'widgets/Page';
 
 export interface StateSchema {
     user: UserSchema,
+    scroll: ScrollSchema,
+    // async reducers
     loginForm?: LoginSchema,
     profile?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,

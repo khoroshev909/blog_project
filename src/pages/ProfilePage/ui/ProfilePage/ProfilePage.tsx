@@ -11,7 +11,7 @@ import { Countries } from 'enteties/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useParams } from 'react-router-dom';
 import useInitialEffect from 'shared/hooks/useInitialEffect';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';

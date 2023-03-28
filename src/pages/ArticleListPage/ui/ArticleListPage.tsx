@@ -6,7 +6,7 @@ import { DynamicReducerLoader, reducerList } from 'shared/lib/components/Dynamyc
 import { useSelector } from 'react-redux';
 import { EntetiesView } from 'features/EntetiesView';
 import { useCallback } from 'react';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import { Error } from 'shared/ui/Error/Error';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
@@ -55,6 +55,7 @@ const ArticleListPage = ({ className }: ArticleListPageProps) => {
     return (
         <DynamicReducerLoader reducers={reducers}>
             <Page
+                listenScroll
                 onScrollEnd={onAddNewPage}
                 className={classNames('', {}, [className])}
             >

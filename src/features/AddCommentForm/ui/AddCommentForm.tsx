@@ -37,7 +37,7 @@ const AddCommentForm = memo(({ className, onAddComment }: AddCommentFormProps) =
             <div className={classNames(cls.AddCommentForm, {}, [className])}>
                 <Input
                     className={cls.input}
-                    value={commentText || ''}
+                    value={commentText}
                     onChange={onCommentChange}
                 />
                 <Button
