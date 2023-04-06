@@ -9,6 +9,8 @@ export default (env: BuildEnv) => {
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
         src: path.resolve(__dirname, 'src'),
+        locale: path.resolve(__dirname, 'public'),
+        buildLocale: path.resolve(__dirname, 'src'),
     };
 
     const mode = env.mode || 'development';

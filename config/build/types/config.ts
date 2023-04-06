@@ -4,6 +4,8 @@ export interface BuildPaths {
     build: string,
     html: string,
     src: string
+    locale: string,
+    buildLocale: string,
 }
 export interface BuildOptions {
     mode: BuildMode,
