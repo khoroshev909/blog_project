@@ -13,12 +13,14 @@ interface InputProps extends HTMLInputProps {
     placeholder?: string,
     modal?: boolean,
     readOnly?: boolean
+    label?: string
 }
 export const Input = memo((props: InputProps) => {
     const {
         className,
         autoFocus,
         value,
+        label,
         onChange,
         readOnly,
         type = 'text',
@@ -44,10 +46,11 @@ export const Input = memo((props: InputProps) => {
 
     return (
         <div className={classNames(cls.InputWrapper, mods, [className])}>
-            {placeholder && (
-                <div>{placeholder}</div>
+            {label && (
+                <div>{label}</div>
             )}
             <input
+                placeholder={placeholder || ''}
                 ref={inputRef}
                 className={cls.Input}
                 readOnly={readOnly}

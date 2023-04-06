@@ -1,23 +1,24 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleList, ArticleView } from 'enteties/Article';
+import { useSearchParams } from 'react-router-dom';
+import { ArticleList } from 'enteties/Article';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import useInitialEffect from 'shared/hooks/useInitialEffect';
 import { DynamicReducerLoader, reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { useSelector } from 'react-redux';
-import { EntetiesView } from 'features/EntetiesView';
 import { useCallback } from 'react';
 import { Page } from 'widgets/Page';
 import { Error } from 'shared/ui/Error/Error';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { fetchNextArticlePage } from '../model/services/fetchNextArticlePage/fetchNextArticlePage';
+import { ArticleFilters } from 'pages/ArticleListPage/ui/ArticleFilters/ArticleFilters';
+import { fetchNextArticlePage } from '../../model/services/fetchNextArticlePage/fetchNextArticlePage';
 import {
     getArticleListError,
     getArticleListLoading,
     getArticleListView,
-} from '../model/selectors/articleListSelectors';
-import { articleListActions, articleListReducer, getArticleList } from '../model/slices/articleListReducer';
-import { initArticleListPage } from '../model/services/initArticleListPage/initArticleListPage';
+} from '../../model/selectors/articleListSelectors';
+import { articleListReducer, getArticleList } from '../../model/slices/articleListReducer';
+import { initArticleListPage } from '../../model/services/initArticleListPage/initArticleListPage';
 
 interface ArticleListPageProps {
     className?: string
@@ -34,18 +35,13 @@ const ArticleListPage = ({ className }: ArticleListPageProps) => {
     const loading = useSelector(getArticleListLoading);
     const articles = useSelector(getArticleList.selectAll);
     const error = useSelector(getArticleListError);
-
+    const [searchParams, _] = useSearchParams();
     useInitialEffect(() => {
-        dispatch(initArticleListPage());
+        dispatch(initArticleListPage(searchParams));
     });
 
     const onAddNewPage = useCallback(() => {
         dispatch(fetchNextArticlePage());
-    }, [dispatch]);
-
-    const changeViewHandler = useCallback((view: ArticleView) => {
-        dispatch(articleListActions.setLimit(view));
-        dispatch(articleListActions.setView(view));
     }, [dispatch]);
 
     if (error) {
@@ -54,18 +50,15 @@ const ArticleListPage = ({ className }: ArticleListPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
+            {!loading && !articles.length && (
+                <Text title={t('noArticles')} />
+            )}
             <Page
                 listenScroll
                 onScrollEnd={onAddNewPage}
                 className={classNames('', {}, [className])}
             >
-                {!loading && !articles.length && (
-                    <Text title={t('noArticles')} />
-                )}
-                <EntetiesView
-                    view={view!}
-                    changeView={changeViewHandler}
-                />
+                <ArticleFilters />
                 <ArticleList
                     articles={articles}
                     loading={loading!}

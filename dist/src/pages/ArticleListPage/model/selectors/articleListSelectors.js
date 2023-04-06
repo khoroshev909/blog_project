@@ -1,0 +1,11 @@
+import { ArticleSortType } from 'pages/ArticleListPage/model/types/articleListSchema';
+export var getArticleListLoading = function (state) { var _a; return (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.loading; };
+export var getArticleListView = function (state) { var _a; return (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.view; };
+export var getArticleListError = function (state) { var _a; return (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.error; };
+export var getArticleListLimit = function (state) { var _a, _b; return (_b = (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.limit) !== null && _b !== void 0 ? _b : 9; };
+export var getArticleListPage = function (state) { var _a, _b; return (_b = (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.page) !== null && _b !== void 0 ? _b : 1; };
+export var getArticleListHasMore = function (state) { var _a; return (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.hasMore; };
+export var getArticleListInit = function (state) { var _a; return (_a = state.articleList) === null || _a === void 0 ? void 0 : _a._init; };
+export var getArticleSortOrder = function (state) { var _a, _b; return (_b = (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.order) !== null && _b !== void 0 ? _b : 'asc'; };
+export var getArticleSort = function (state) { var _a, _b; return (_b = (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.sort) !== null && _b !== void 0 ? _b : ArticleSortType.CREATED_AT; };
+export var getArticleSearch = function (state) { var _a, _b; return (_b = (_a = state.articleList) === null || _a === void 0 ? void 0 : _a.search) !== null && _b !== void 0 ? _b : ''; };

@@ -24,6 +24,7 @@ module.exports = {
         'react-hooks',
     ],
     rules: {
+        'arrow-body-style': 'off',
         'no-nested-ternary': 'off',
         'react/jsx-indent': [2, 4],
         'react/no-array-index-key': 'off',
@@ -47,7 +48,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
-            ignoreAttribute: ['data-testid', 'to'],
+            ignoreAttribute: ['data-testid', 'to', 'target'],
         }],
         'max-len': ['error', { ignoreComments: true, code: 120 }],
         'jsx-a11y/click-events-have-key-events': 'off',

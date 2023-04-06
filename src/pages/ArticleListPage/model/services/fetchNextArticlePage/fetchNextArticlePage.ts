@@ -20,8 +20,8 @@ export const fetchNextArticlePage = createAsyncThunk<undefined, void, ThunkConfi
 
         try {
             if (hasMore && !loading) {
-                dispatch(fetchArticleList({ page: page + 1 }));
                 dispatch(articleListActions.setPage(page + 1));
+                dispatch(fetchArticleList({ replace: false }));
             }
         } catch (e) {
             return rejectWithValue('error');

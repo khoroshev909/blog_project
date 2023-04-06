@@ -5,11 +5,11 @@ import {
 } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'pages/ProfilePage';
 import { AxiosInstance } from 'axios';
-import { ArticleDetailsSchema } from 'enteties/Article/model/types/articleSchema';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentsSchema';
+import { ArticleDetailsSchema } from 'enteties/Article';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticleListSchema } from 'pages/ArticleListPage';
 import { ScrollSchema } from 'widgets/Page';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
     user: UserSchema,
@@ -18,9 +18,10 @@ export interface StateSchema {
     loginForm?: LoginSchema,
     profile?: ProfileSchema,
     articleDetails?: ArticleDetailsSchema,
-    articleDetailsComments?: ArticleDetailsCommentsSchema,
+    articleDetailsPage?: ArticleDetailsPageSchema,
     addCommentForm?: AddCommentFormSchema,
-    articleList?: ArticleListSchema
+    articleList?: ArticleListSchema,
+
 }
 
 export type StateKeys = keyof StateSchema

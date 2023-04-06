@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData } from 'enteties/User/model/selectors/getUserAuthData';
 import { userActions } from 'enteties/User';
 import { useNavigate } from 'react-router-dom';
+import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -48,6 +49,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
             <div className={cls.links}>
+                <Button
+                    theme={ButtonTheme.BACKGROUND_INVERTED}
+                    onClick={() => navigate(routeConfig.article_create.path!)}
+                >
+                    {t('create')}
+                </Button>
                 <Button
                     theme={ButtonTheme.BACKGROUND_INVERTED}
                     onClick={logoutHandler}

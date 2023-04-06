@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
-import { Text } from 'shared/ui/Text/Text';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Text } from 'shared/ui/Text/Text';
 import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import cls from './ArticleList.module.scss';
@@ -11,7 +11,8 @@ interface ArticleListProps {
     className?: string,
     articles: Article[],
     loading: boolean,
-    view?: ArticleView
+    view?: ArticleView,
+    target?: HTMLAttributeAnchorTarget
 }
 
 const renderSkeletons = (view: ArticleView) => (
@@ -25,7 +26,7 @@ const renderSkeletons = (view: ArticleView) => (
 );
 
 export const ArticleList = memo(({
-    className, articles, loading, view = ArticleView.SMALL,
+    className, articles, loading, target, view = ArticleView.SMALL,
 }: ArticleListProps) => {
     const { t } = useTranslation();
 
@@ -35,15 +36,21 @@ export const ArticleList = memo(({
             className={cls.ArticleItem}
             article={article}
             view={view}
+            target={target}
         />
     );
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-            {articles.length ? (
-                articles.map(renderArticle)
-            ) : null}
-            {loading && renderSkeletons(view)}
+            {loading ? (
+                renderSkeletons(view)
+            ) : (
+                articles.length ? (
+                    articles.map(renderArticle)
+                ) : (
+                    <Text title={t('noArticles')} />
+                )
+            )}
         </div>
     );
 });

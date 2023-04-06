@@ -7,7 +7,11 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig>(
     async (id, thunkAPI) => {
         const { api } = thunkAPI.extra;
         try {
-            const response = await api.get(`/articles/${id}`);
+            const response = await api.get(`/articles/${id}`, {
+                params: {
+                    _expand: 'user',
+                },
+            });
 
             if (!response?.data) {
                 throw Error();

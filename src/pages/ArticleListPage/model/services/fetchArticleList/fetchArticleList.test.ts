@@ -114,12 +114,13 @@ describe('fetchArticleList.test', () => {
         const thunk = new TestAsyncThunk(fetchArticleList, {
             articleList: {
                 limit: 2,
+                page: 1,
             },
         });
 
         thunk.api.get.mockReturnValue(Promise.resolve({ data }));
 
-        const result = await thunk.callThunk({ page: 2 });
+        const result = await thunk.callThunk({ replace: true });
 
         expect(thunk.api.get).toHaveBeenCalled();
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
@@ -131,12 +132,13 @@ describe('fetchArticleList.test', () => {
         const thunk = new TestAsyncThunk(fetchArticleList, {
             articleList: {
                 limit: 2,
+                page: 1,
             },
         });
 
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
 
-        const result = await thunk.callThunk({ page: 2 });
+        const result = await thunk.callThunk({ replace: true });
 
         expect(thunk.api.get).toHaveBeenCalled();
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);

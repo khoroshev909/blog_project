@@ -1,9 +1,12 @@
 import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { ReduxStoreWithManager, StateKeys } from 'app/providers/StoreProvider/config/StateSchema';
+import { ReduxStoreWithManager, StateKeys, StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 
-export type reducerList = { [name in StateKeys]?: Reducer }
+export type reducerList = {
+    [name in StateKeys]?: Reducer
+    // [name in StateKeys]?: Reducer<NonNullable<StateSchema[name]>>
+}
 interface DynamicReducerProps {
     children: ReactNode,
     removeOnUnmount?: boolean,

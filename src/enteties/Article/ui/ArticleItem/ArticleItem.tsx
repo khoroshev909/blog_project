@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button } from 'shared/ui/Button/Button';
-import { useNavigate } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './ArticleItem.module.scss';
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
@@ -18,16 +18,14 @@ import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleT
 interface ArticleItemProps {
     className?: string,
     article: Article,
-    view?: ArticleView
+    view?: ArticleView,
+    target?: HTMLAttributeAnchorTarget,
 }
 
-export const ArticleItem = memo(({ className, article, view = ArticleView.SMALL }: ArticleItemProps) => {
+export const ArticleItem = memo(({
+    className, article, target, view = ArticleView.SMALL,
+}: ArticleItemProps) => {
     const { t } = useTranslation();
-
-    const navigate = useNavigate();
-    const onArticleNavigate = () => {
-        navigate(`${routeConfig.article_list.path}/${article.id}`);
-    };
 
     const types = (
         <Text className={cls.types} text={article.type.join(', ')} />
@@ -47,19 +45,21 @@ export const ArticleItem = memo(({ className, article, view = ArticleView.SMALL 
 
     if (view === ArticleView.SMALL) {
         return (
-            <div className={classNames(cls.ArticleItem, {}, [className, cls[view]])}>
-                <Card onClick={onArticleNavigate}>
-                    <div className={cls.imageWrapper}>
-                        <img src={article.img} alt={article.title} />
-                        <Text className={cls.date} text={article.createdAt} />
-                    </div>
-                    <div className={cls.infoWrapper}>
-                        {types}
-                        {views}
-                    </div>
-                    <Text className={cls.title} text={article.title} />
-                </Card>
-            </div>
+            <AppLink to={`${routeConfig.article_list.path}/${article.id}`} target={target}>
+                <div className={classNames(cls.ArticleItem, {}, [className, cls[view]])}>
+                    <Card>
+                        <div className={cls.imageWrapper}>
+                            <img src={article.img} alt={article.title} />
+                            <Text className={cls.date} text={article.createdAt} />
+                        </div>
+                        <div className={cls.infoWrapper}>
+                            {types}
+                            {views}
+                        </div>
+                        <Text className={cls.title} text={article.title} />
+                    </Card>
+                </div>
+            </AppLink>
         );
     }
     return (
@@ -82,9 +82,11 @@ export const ArticleItem = memo(({ className, article, view = ArticleView.SMALL 
                     />
                 )}
                 <div className={cls.footer}>
-                    <Button onClick={onArticleNavigate}>
-                        {t('readMore')}
-                    </Button>
+                    <AppLink to={`${routeConfig.article_list.path}/${article.id}`}>
+                        <Button>
+                            {t('readMore')}
+                        </Button>
+                    </AppLink>
                     {views}
                 </div>
             </Card>
