@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { LoginSchema } from 'features/AuthByUsername';
+import { LoginSchema } from '../../types/LoginSchema';
 import { getUsername } from './getUsername';
 
 describe('getUsername.test', () => {

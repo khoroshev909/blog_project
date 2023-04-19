@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_AUTH_DATA_KEY } from 'shared/config/const';
+import { USER_AUTH_DATA_KEY } from '../const';
 
 export const $api = axios.create({
     baseURL: __API__,

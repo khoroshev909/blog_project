@@ -3,10 +3,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { updateProfileData } from 'pages/ProfilePage/services/updateProfileData/updateProfileData';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'enteties/User';
-import { getProfileData } from 'pages/ProfilePage/model/selectors/getProfileData/getProfileData';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { updateProfileData } from '../../services/updateProfileData/updateProfileData';
 import cls from './ProfilePageHeader.module.scss';
 import { profileActions } from '../../model/slice/profileSlice';
 

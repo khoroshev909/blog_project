@@ -1,8 +1,8 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
-import { validateProfileErrors } from 'pages/ProfilePage/services/validateProfileErrors/validateProfileErrors';
-import { profileActions } from 'pages/ProfilePage/model/slice/profileSlice';
+import { validateProfileErrors } from '../validateProfileErrors/validateProfileErrors';
+import { profileActions } from '../../model/slice/profileSlice';
 import { updateProfileData } from './updateProfileData';
 
 const data = {

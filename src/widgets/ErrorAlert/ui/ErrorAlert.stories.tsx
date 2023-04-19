@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ErrorAlert } from 'widgets/ErrorAlert';
+import { ErrorAlert } from '../ui/ErrorAlert';
 
 export default {
     title: 'widgets/ErrorAlert',

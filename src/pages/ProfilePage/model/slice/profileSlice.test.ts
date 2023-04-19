@@ -1,6 +1,6 @@
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
-import { fetchProfileData } from 'pages/ProfilePage/services/fetchProfileData/fetchProfileData';
+import { fetchProfileData } from '../../services/fetchProfileData/fetchProfileData';
 import { ProfileSchema, ValidateErrors } from '../types/profile';
 import { profileActions, profileReducer } from './profileSlice';
 

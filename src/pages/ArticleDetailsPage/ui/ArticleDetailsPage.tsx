@@ -12,7 +12,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { useCallback, useEffect, memo } from 'react';
 import { Page } from 'widgets/Page';
 import { articleDetailsActions } from 'enteties/Article/model/slice/articleDetailsSlice';
-import { articleDetailsPageReducers } from 'pages/ArticleDetailsPage/model/slice';
+import { articleDetailsPageReducers } from '../model/slice';
 import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleCommentsLoading } from '../model/selectors/articleCommentsSelectors';
 import { articleDetailsCommentsActions, getArticleComments } from '../model/slice/articleDetailsCommentsSlice';

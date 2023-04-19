@@ -7,10 +7,10 @@ import { ArticleTypes, ArticleView } from 'enteties/Article';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { Input } from 'shared/ui/Input/Input';
 import { OrderType } from 'shared/types/orderType';
-import { ArticleSortType } from 'pages/ArticleListPage/model/types/articleListSchema';
-import { fetchArticleList } from 'pages/ArticleListPage/model/services/fetchArticleList/fetchArticleList';
 import { Card } from 'shared/ui/Card/Card';
 import useDebounce from 'shared/hooks/useDebounce';
+import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList';
+import { ArticleSortType } from '../../model/types/articleListSchema';
 import { ArticleSort } from '../ArticleSort/ArticleSort';
 import {
     getArticleListView,

@@ -4,14 +4,14 @@ import { DynamicReducerLoader, reducerList } from 'shared/lib/components/Dynamyc
 import { ProfileCard } from 'enteties/Profile';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly } from 'pages/ProfilePage/model/selectors/getProfileReadonly/getProfileReadonly';
-import { getProfileForm } from 'pages/ProfilePage/model/selectors/getProfileForm/getProfileForm';
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useParams } from 'react-router-dom';
 import useInitialEffect from 'shared/hooks/useInitialEffect';
 import { Page } from 'widgets/Page';
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getValidateErrors } from '../../model/selectors/getValidateErrors/getValidateErrors';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoding';

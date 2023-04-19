@@ -10,7 +10,7 @@ import { Page } from 'widgets/Page';
 import { Error } from 'shared/ui/Error/Error';
 import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { ArticleFilters } from 'pages/ArticleListPage/ui/ArticleFilters/ArticleFilters';
+import { ArticleFilters } from '../ArticleFilters/ArticleFilters';
 import { fetchNextArticlePage } from '../../model/services/fetchNextArticlePage/fetchNextArticlePage';
 import {
     getArticleListError,

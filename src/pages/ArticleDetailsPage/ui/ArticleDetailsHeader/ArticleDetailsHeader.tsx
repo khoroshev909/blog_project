@@ -5,7 +5,7 @@ import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { useNavigate } from 'react-router-dom';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { articleDetailsCanEdit } from 'pages/ArticleDetailsPage/model/selectors/articleDetailsCanEdit';
+import { articleDetailsCanEdit } from '../../model/selectors/articleDetailsCanEdit';
 import cls from './ArticleDetailsHeader.module.scss';
 
 interface ArticleDetailsHeaderProps {

@@ -1,5 +1,4 @@
-import { Profile } from 'pages/ProfilePage';
-import { ValidateErrors } from 'pages/ProfilePage/model/types/profile';
+import { Profile, ValidateErrors } from '../../model/types/profile';
 
 export function validateProfileErrors(profile: Profile): ValidateErrors[] {
     const errors = [];

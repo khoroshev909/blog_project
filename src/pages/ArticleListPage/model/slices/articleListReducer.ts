@@ -1,10 +1,9 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Article, ArticleTypes, ArticleView } from 'enteties/Article';
-import { ArticleListSchema } from 'pages/ArticleListPage';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ENTETIES_VIEW } from 'shared/config/const';
 import { OrderType } from 'shared/types/orderType';
-import { ArticleSortType } from '../types/articleListSchema';
+import { ArticleListSchema, ArticleSortType } from '../types/articleListSchema';
 import { fetchArticleList } from '../services/fetchArticleList/fetchArticleList';
 
 export const articleListAdapter = createEntityAdapter<Article>({

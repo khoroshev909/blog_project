@@ -4,16 +4,16 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
-import { loginByUsername, loginReducer } from 'features/AuthByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { DynamicReducerLoader, reducerList } from 'shared/lib/components/DynamycReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { loginByUsername } from '../../services/loginByUsername/loginByUsername';
+import { loginReducer, loginActions } from '../../model/slice/loginSlice';
 import { getError } from '../../model/selectors/getError/getError';
 import { getPassword } from '../../model/selectors/getPassword/getPassword';
 import { getUsername } from '../../model/selectors/getUsername/getUsername';
 import cls from './LoginForm.module.scss';
 import { getLoading } from '../../model/selectors/getLoading/getLoading';
-import { loginActions } from '../../model/slice/loginSlice';
 
 export interface LoginFormProps {
     className?: string,

@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ArticleSortType } from 'pages/ArticleListPage/model/types/articleListSchema';
 import { ArticleTypes } from 'enteties/Article';
+import { ArticleSortType } from '../types/articleListSchema';
 
 export const getArticleListLoading = (state: StateSchema) => state.articleList?.loading;
 export const getArticleListView = (state: StateSchema) => state.articleList?.view;

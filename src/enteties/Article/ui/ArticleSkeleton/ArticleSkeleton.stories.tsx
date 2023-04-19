@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ArticleView } from 'enteties/Article';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { THEMES } from 'app/providers/ThemeProvider';
+import { ArticleView } from '../../model/types/article';
 import { ArticleSkeleton } from './ArticleSkeleton';
 
 export default {

@@ -1,5 +1,5 @@
 import { ArticleImageBlock } from 'enteties/Article/model/types/article';
-import { Text } from 'shared/ui/Text/Text';
+import { Text } from '../Text/Text';
 
 interface ImageProps {
     className?: string,

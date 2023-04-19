@@ -1,6 +1,6 @@
 import { CurrencyEnum } from 'enteties/Currency';
 import { Countries } from 'enteties/Country';
-import { ValidateErrors } from 'pages/ProfilePage/model/types/profile';
+import { ValidateErrors } from '../../model/types/profile';
 import { validateProfileErrors } from './validateProfileErrors';
 
 const data = {

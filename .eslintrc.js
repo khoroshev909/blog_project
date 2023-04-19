@@ -22,6 +22,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        'khoroshev909-plugin',
     ],
     rules: {
         'arrow-body-style': 'off',
@@ -57,6 +58,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'default-param-last': 'off',
         'no-undef': 'off',
+        'khoroshev909-plugin/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,
