@@ -10,6 +10,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
         build: '',
         html: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
+        locale: '',
+        buildLocale: '',
     };
     config.resolve?.modules?.push(paths.src);
     config.resolve?.extensions?.push('.ts', '.tsx');
